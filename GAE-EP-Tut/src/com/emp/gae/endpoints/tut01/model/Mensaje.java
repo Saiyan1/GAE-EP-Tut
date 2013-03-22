@@ -2,17 +2,21 @@ package com.emp.gae.endpoints.tut01.model;
 
 import java.util.Date;
 
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
-import com.googlecode.objectify.annotation.Index;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 
-@Entity
+@PersistenceCapable ( identityType =  IdentityType.APPLICATION )
 public class Mensaje {
-	@Id Long id;
+    @PrimaryKey
+    @Persistent ( valueStrategy =  IdGeneratorStrategy.IDENTITY )	
+	Long id;
 	String nick;
 	String msg;
-	@Index Date fecha;
+	Date fecha;
 	
 	private Mensaje() {}
 	

@@ -1,0 +1,177 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://gae-ep-tut.appspot.com/_ah/api",
+  "name" : "mensaje",
+  "version" : "v1",
+  "description" : "",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "http://gae-ep-tut.appspot.com/_ah/spi",
+    "deadline" : 10.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "mensaje.listMensaje" : {
+      "path" : "mensaje",
+      "httpMethod" : "GET",
+      "rosyMethod" : "MensajeEndpoint.listMensaje",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "mensaje.getMensaje" : {
+      "path" : "mensaje/{id}",
+      "httpMethod" : "GET",
+      "rosyMethod" : "MensajeEndpoint.getMensaje",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "mensaje.insertMensaje" : {
+      "path" : "mensaje",
+      "httpMethod" : "POST",
+      "rosyMethod" : "MensajeEndpoint.insertMensaje",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "mensaje.updateMensaje" : {
+      "path" : "mensaje",
+      "httpMethod" : "PUT",
+      "rosyMethod" : "MensajeEndpoint.updateMensaje",
+      "request" : {
+        "parameters" : {
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "mensaje.removeMensaje" : {
+      "path" : "mensaje/{id}",
+      "httpMethod" : "DELETE",
+      "rosyMethod" : "MensajeEndpoint.removeMensaje",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "required" : true,
+            "type" : "string"
+          }
+        },
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Mensaje" : {
+        "id" : "Mensaje",
+        "type" : "object",
+        "properties" : {
+          "fecha" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "msg" : {
+            "type" : "string"
+          },
+          "nick" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Mensajes" : {
+        "id" : "Mensajes",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Mensaje"
+            }
+          }
+        }
+      }
+    },
+    "methods" : {
+      "MensajeEndpoint.listMensaje" : {
+        "response" : {
+          "type" : "object",
+          "$ref" : "Mensajes"
+        }
+      },
+      "MensajeEndpoint.getMensaje" : {
+        "response" : {
+          "$ref" : "Mensaje"
+        }
+      },
+      "MensajeEndpoint.insertMensaje" : {
+        "request" : {
+          "$ref" : "Mensaje"
+        },
+        "response" : {
+          "$ref" : "Mensaje"
+        }
+      },
+      "MensajeEndpoint.updateMensaje" : {
+        "request" : {
+          "$ref" : "Mensaje"
+        },
+        "response" : {
+          "$ref" : "Mensaje"
+        }
+      },
+      "MensajeEndpoint.removeMensaje" : {
+        "response" : {
+          "$ref" : "Mensaje"
+        }
+      }
+    }
+  }
+}

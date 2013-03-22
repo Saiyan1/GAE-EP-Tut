@@ -17,15 +17,6 @@
 		<servlet-name>Mensajes</servlet-name>
 		<url-pattern>/mensajes</url-pattern>
 	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>Chat</servlet-name>
-		<servlet-class>com.emp.gae.endpoints.tut01.ChatServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Chat</servlet-name>
-		<url-pattern>/chat</url-pattern>
-	</servlet-mapping>	
 	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -35,7 +26,7 @@
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
   <init-param>
    <param-name>services</param-name>
-   <param-value/>
+   <param-value>com.emp.gae.endpoints.tut01.model.MensajeEndpoint</param-value>
   </init-param>
  </servlet>
  <servlet-mapping>
